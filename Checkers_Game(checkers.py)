@@ -1,0 +1,15 @@
+from numpy import random
+digit = int(input("Enter the size board you would like between 4 and 16: "))
+colors = ["Empty", "Red", "Black"]
+def build_board():
+    checkers = random.choice(colors, (digit,digit))
+    return checkers
+
+def get_count():
+    empty = (build_board() == colors[0])
+    red = (build_board() == colors[1])
+    black = (build_board() == colors[2])
+    print(f"There are {empty.sum()} 'Empty' cells, {red.sum()} 'Red' cells, and {black.sum()} 'Black' cells.")
+
+if __name__ == "__main__":
+    print("Do not run this as the main file.")
