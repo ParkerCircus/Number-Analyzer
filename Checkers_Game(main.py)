@@ -1,0 +1,6 @@
+import checkers
+def game():
+    print(checkers.build_board())
+    print(checkers.get_count())
+if __name__ == "__main__":
+    game()
