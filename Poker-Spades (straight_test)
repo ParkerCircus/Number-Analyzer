@@ -1,0 +1,22 @@
+import unittest
+import practice
+
+class MyTestCase(unittest.TestCase):
+    def test_check_straight1(self):
+        self.assertEqual(practice.check_straight("S2", "S3", "S4"), 4)
+    def test_check_straight2(self):
+        self.assertEqual(practice.check_straight("S5", "S3", "S4"), 5)
+    def test_check_straight3(self):
+        self.assertEqual(practice.check_straight("S2", "S4", "S3"), 4)
+    def test_check_straight4(self):
+        self.assertEqual(practice.check_straight("S5", "S4", "S3"), 5)
+    def test_check_straight5(self):
+        self.assertEqual(practice.check_straight("S6", "S5", "S7"), 7)
+    def test_check_straight6(self):
+        self.assertEqual(practice.check_straight("S5", "S6", "S4"), 6)
+    def test_check_straight7(self):
+        self.assertEqual(practice.check_straight("S2", "S7", "S10"), 0)
+
+
+if __name__ == '__main__':
+    unittest.main()
