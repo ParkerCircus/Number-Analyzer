@@ -1,0 +1,55 @@
+cards = ('S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'SJ', 'SQ', 'SK', 'SA')
+def check_straight(card1, card2, card3):
+    a = cards.index(card1)
+    b = cards.index(card2)
+    c = cards.index(card3)
+    if a < b < c and abs(b - a) == abs(c - b) == 1:
+        return max(a, b, c) + 2
+    elif a < c < b and abs(b - c) == abs(c -a) == 1:
+        return max(a, b, c) + 2
+    elif b < a < c and abs(c - a) == abs(a - b) == 1:
+        return max(a, b, c) + 2
+    elif b < c < a and abs(a - c) == abs(c - b) == 1:
+        return max(a, b, c) + 2
+    elif c < a < b and abs(b - a) == abs(a - c) == 1:
+        return max(a, b, c) + 2
+    elif c < b < a and abs(a - b) == abs(b -c) == 1:
+        return max(a, b, c) + 2
+    else:
+        return 0
+
+def check_3ofa_kind(card1, card2, card3):
+    if cards.index(card1) == cards.index(card2) == cards.index(card3):
+        return cards.index(card3) + 2
+    else:
+        return 0
+
+def check_royal_flush(card1, card2, card3):
+    if check_straight(card1, card2, card3) == 14:
+        return 14
+    else:
+        return 0
+
+def play_cards(left1, left2, left3, right1, right2, right3):
+    if check_straight(left1, left2, left3) > check_straight(right1, right2, right3):
+        return -1
+    elif check_straight(left1, left2, left3) < check_straight(right1, right2, right3):
+        return 1
+    elif check_straight(left1, left2, left3) == check_straight(right1, right2, right3) != 0:
+        return 0
+    elif check_3ofa_kind(left1, left2, left3) > check_3ofa_kind(right1, right2, right3):
+        return -1
+    elif check_3ofa_kind(left1, left2, left3) < check_3ofa_kind(right1, right2, right3):
+        return 1
+    elif check_3ofa_kind(left1, left2, left3) == check_3ofa_kind(right1, right2, right3) != 0:
+        return 0
+    elif check_straight(left1, left2, left3) != 0 and check_3ofa_kind(right1, right2, right3) != 0:
+        return -1
+    elif check_3ofa_kind(left1, left2, left3) != 0 and check_straight(right1, right2, right3) != 0:
+        return 1
+    elif check_royal_flush(left1, left2, left3) == 14 and check_royal_flush(right1, right2, right3) != 14:
+        return -1
+    elif check_royal_flush(left1, left2, left3) != 14 and check_royal_flush(right1, right2, right3) == 14:
+        return 1
+    else:
+        return 0
