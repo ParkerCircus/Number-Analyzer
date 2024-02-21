@@ -1,0 +1,13 @@
+import unittest
+import practice
+
+class MyTestCase(unittest.TestCase):
+    def test_royal_flush(self):
+        self.assertEqual(practice.check_royal_flush("S2", "S10", "SQ"), 0)
+    def test_royal_flush1(self):
+        self.assertEqual(practice.check_royal_flush("SJ", "SQ", "SK"), 0)
+    def test_royal_flush2(self):
+        self.assertEqual(practice.check_royal_flush("SQ", "SK", "SA"), 14)
+
+if __name__ == '__main__':
+    unittest.main()
