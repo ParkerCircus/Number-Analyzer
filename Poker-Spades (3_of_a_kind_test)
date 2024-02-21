@@ -1,0 +1,16 @@
+import unittest
+import practice
+
+class MyTestCase(unittest.TestCase):
+    def test_check_3ofa_kind(self):
+        self.assertEqual(practice.check_3ofa_kind("S2", "S3", "S4"), 0)
+    def test_check_3ofa_kind1(self):
+        self.assertEqual(practice.check_3ofa_kind("S3", "S3", "S4"), 0)
+    def test_check_3ofa_kind2(self):
+        self.assertEqual(practice.check_3ofa_kind("S4", "S4", "S4"), 4)
+    def test_check_3ofa_kind3(self):
+        self.assertEqual(practice.check_3ofa_kind("SJ", "SJ", "SJ"), 11)
+
+
+if __name__ == '__main__':
+    unittest.main()
