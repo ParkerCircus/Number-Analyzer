@@ -1,0 +1,43 @@
+import math
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+        self.diameter = 0
+        self.circumference = 0
+        self.area = 0
+    def calculate_diameter(self):
+        self.diameter = 2 * self.radius
+        return self.diameter
+    def calculate_circumference(self):
+        self.circumference = 2 * self.radius * math.pi
+        return self.circumference
+    def calculate_area(self):
+        self.area = math.pi * self.radius ** 2
+        return self.area
+    def grow(self):
+        self.radius = self.radius * 2
+    def get_radius(self, radius):
+        return self.radius
+radius = float(input("Enter the radius of your circle: "))
+while True:
+    if radius <= 0:
+        radius = float(input("Invalid length. Please enter a valid radius: "))
+    else:
+        break
+c1 = Circle(radius)
+c1.calculate_diameter()
+c1.calculate_circumference()
+c1.calculate_area()
+print(f"Your radius is {c1.radius}, diameter is {c1.diameter}, circumference {c1.circumference}, and area {c1.area}.")
+while True:
+    answer = input("Would you like the circle to grow (y/n)? ")
+    if answer == "y":
+        c1.grow()
+        c1.calculate_diameter()
+        c1.calculate_circumference()
+        c1.calculate_area()
+        print(
+            f"Your radius is {c1.radius}, diameter is {c1.diameter}, circumference {c1.circumference}, and area {c1.area}.")
+    else:
+        print(f"Thank you and goodbye! Your radius was {c1.radius}")
+        break
