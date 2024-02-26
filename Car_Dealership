@@ -1,0 +1,90 @@
+class Vehicle:
+    vehicles_to_compare = []
+    def __init__(self, make, miles, price):
+        self.make = make
+        self.miles = miles
+        self.price = price
+        engine_on = False
+        Vehicle.vehicles_to_compare.append(self)
+    def start_engine(self):
+        print("Starting engine...")
+        engine_on = True
+    def make_noise(self):
+        print("Beep beep!")
+class Truck(Vehicle):
+    def __init__(self, make, miles, price):
+        Vehicle.__init__(self, make, miles, price)
+        self.miles = miles
+        self.price = price
+        cargo = False
+    def load_cargo(self):
+        print("Loading the truck bed...")
+        cargo = True
+class Motorcycle(Vehicle):
+    def __init__(self, make, miles, price, top_speed):
+        Vehicle.__init__(self, make, miles, price)
+        self.top_speed = top_speed
+    def make_noise(self):
+        print("Vroom vroom!")
+v1 = Vehicle
+t1 = Truck("a", 10, 30)
+t2 = Truck("b", 12, 40)
+t3 = Truck("c", 40, 50)
+m1 = Motorcycle("d", 50, 60, 70)
+m2 = Motorcycle("e", 60, 39, 67)
+m3 = Motorcycle("f", 34, 56, 90)
+trucks = [t1, t2, t3]
+bikes = [m1, m2, m3]
+while True:
+    choose = input("Would you like to select a truck or a motorcycle (t/m)? ")
+    if choose != "t" and choose != "m":
+        choose = input("Invalid response. Would you like to select a truck or a motorcycle (t/m)? ")
+    elif choose == "t":
+        for truck in trucks:
+            print(f"1. {t1.make}: with {t1.miles} costs {t1.price}")
+            print(f"2. {t2.make}: with {t2.miles} costs {t2.price}")
+            print(f"3. {t3.make}: with {t3.miles} costs {t3.price}")
+            break
+        add = input("Would you like to add a vehicle to compare (y/n)? ")
+        if add == "y":
+            number = int(input("Select the number of the truck you would like to add (1-3): "))
+            while True:
+                if 1 <= number <= 3:
+                    Vehicle.vehicles_to_compare.append(trucks[number - 1])
+                    break
+                elif number < 1 or number > 3:
+                    number = int(input("Please enter a valid number: "))
+        else:
+            print("Thank you")
+        comparison = input("Would you like to compare vehicles now? ")
+        if comparison == "y":
+            for vehicle in Vehicle.vehicles_to_compare:
+                print(vehicle)
+            break
+        else:
+            print("Thank you")
+    elif choose == "m":
+        for bike in bikes:
+            print(f"{m1.make}: with {m1.miles} and a top speed of {m1.top_speed} costs {m1.price}")
+            print(f"{m2.make}: with {m2.miles} and a top speed of {m2.top_speed} costs {m2.price}")
+            print(f"{m3.make}: with {m3.miles} and a top speed of {m3.top_speed} costs {m3.price}")
+            break
+        add = input("Would you like to add a vehicle to compare (y/n)? ")
+        if add == "y":
+            number = int(input("Select the number of the truck you would like to add (1-3): "))
+            while True:
+                if 1 <= number <= 3:
+                    Vehicle.vehicles_to_compare.append(bikes[number - 1])
+                    break
+                elif number < 1 or number > 3:
+                    number = int(input("Please enter a valid number: "))
+        else:
+            print("Thank you")
+        comparison = input("Would you like to compare vehicles now? ")
+        if comparison == "y":
+            for vehicle in Vehicle.vehicles_to_compare:
+                print(vehicle)
+            break
+        else:
+            print("Thank you")
+            break
